@@ -1,5 +1,5 @@
-// Exporting an object containing all models
-
+"use strict";
+const Workout = require(`./workouts`);
 module.exports = {
-  Workout: require('./Workout'),
+  Workout
 };
