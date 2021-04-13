@@ -1,19 +1,22 @@
-async function init() {
+async function initWorkout() {
   const lastWorkout = await API.getLastWorkout();
-  console.log(lastWorkout);
+  console.log("Last workout:", lastWorkout);
+  if (lastWorkout) {
+    document
+      .querySelector("a[href='/exercise?']")
+      .setAttribute("href", `/exercise?id=${lastWorkout._id}`);
 
-  document
-    .querySelector("a[href='/exercise?']")
-    .setAttribute("href", `/exercise?id=${lastWorkout._id}`);
+    const workoutSummary = {
+      date: formatDate(lastWorkout.day),
+      totalDuration: lastWorkout.totalDuration,
+      numExercises: lastWorkout.exercises.length,
+      ...tallyExercises(lastWorkout.exercises),
+    };
 
-  const workoutSummary = {
-    date: formatDate(lastWorkout.day),
-    totalDuration: lastWorkout.totalDuration,
-    numExercises: lastWorkout.exercises.length,
-    ...tallyExercises(lastWorkout.exercises)
-  };
-
-  renderWorkoutSummary(workoutSummary);
+    renderWorkoutSummary(workoutSummary);
+  } else {
+    renderNoWorkoutText();
+  }
 }
 
 function tallyExercises(exercises) {
@@ -35,7 +38,7 @@ function formatDate(date) {
     weekday: "long",
     year: "numeric",
     month: "long",
-    day: "numeric"
+    day: "numeric",
   };
 
   return new Date(date).toLocaleDateString(options);
@@ -51,10 +54,10 @@ function renderWorkoutSummary(summary) {
     totalWeight: "Total Weight Lifted",
     totalSets: "Total Sets Performed",
     totalReps: "Total Reps Performed",
-    totalDistance: "Total Distance Covered"
+    totalDistance: "Total Distance Covered",
   };
 
-  Object.keys(summary).forEach(key => {
+  Object.keys(summary).forEach((key) => {
     const p = document.createElement("p");
     const strong = document.createElement("strong");
 
@@ -68,4 +71,14 @@ function renderWorkoutSummary(summary) {
   });
 }
 
-init();
+function renderNoWorkoutText() {
+  const container = document.querySelector(".workout-stats");
+  const p = document.createElement("p");
+  const strong = document.createElement("strong");
+  strong.textContent = "You have not created a workout yet!";
+
+  p.appendChild(strong);
+  container.appendChild(p);
+}
+
+initWorkout();
