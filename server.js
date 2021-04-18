@@ -1,25 +1,27 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const morgan = require("morgan");
-const apiRoutes = require("./routes/apiRoute.js");
-const htmlRoutes = require("./routes/htmlRoute.js")
+const logger = require("morgan");
 
 const PORT = process.env.PORT || 3000;
-
+// express app//
 const app = express();
-app.use(morgan("dev"));
-
+app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
+// set our mongoose connection to  the mongo atlas uri or local host//
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
-  useFindAndModify: false
+  useFindAndModify: false,
+  useCreateIndex: true,
+  useUnifiedTopology: true
 });
 
-app.use(htmlRoutes);
-app.use(apiRoutes);
-app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}!`);
+// require our html and api routes//
+require("./routes/apiRoutes")(app);
+require("./routes/htmlRoutes")(app);
+//listen to the port
+app.listen(PORT,()=>{
+    console.log(`listen to the port ${PORT}`);
 });

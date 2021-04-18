@@ -1,26 +1,20 @@
 {
-  "name": "homework-17",
+  "name": "mongoose_skeleton",
   "version": "1.0.0",
-  "description": "Workout-Tracker",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seed": "cd seeders && node seeds.js"
+    "watch": "nodemon server.js",
+    "seed": "node seeders/seed.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jarrodfinn/Homework-17.git"
-  },
-  "author": "Jarrod Finn",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jarrodfinn/Homework-17/issues"
-  },
-  "homepage": "https://github.com/jarrodfinn/Homework-17#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.9.6",
-    "morgan": "^1.10.0"
+    "mongoose": "^5.12.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7"
   }
 }

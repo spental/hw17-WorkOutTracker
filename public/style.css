@@ -25,12 +25,20 @@ nav {
   font-size: 1.2rem;
 }
 
+.dash{
+  float: right;
+}
+
 a,
 a:hover,
 a:active,
 a:visited {
   text-decoration: none;
   color: inherit;
+}
+
+nav a:hover{
+  opacity: 0.7;
 }
 
 header {
