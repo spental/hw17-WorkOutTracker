@@ -5,7 +5,12 @@ const mongoose = require("mongoose");
 
 const PORT = process.env.PORT || 3030;
 
+<<<<<<< HEAD
 const db = require("./models");
+=======
+const PORT = process.env.PORT || 8089;
+// express app//
+>>>>>>> 00dfa1a84dd1daae851101f4b41f753996649363
 const app = express();
 
 app.use(logger("dev"));
@@ -13,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
+<<<<<<< HEAD
 
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
@@ -72,6 +78,14 @@ app.get("/api/workouts/range", (req, res) => {
         .catch((err) => {
             res.json(err);
         });
+=======
+// set our mongoose connection to  the mongo atlas uri or local host//
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://admin:Password69@cluster0.ekoru.mongodb.net/myFirstDatabase", {
+  useNewUrlParser: true,
+  useFindAndModify: false,
+  useCreateIndex: true,
+  useUnifiedTopology: true
+>>>>>>> 00dfa1a84dd1daae851101f4b41f753996649363
 });
 
 app.listen(PORT, () => {
