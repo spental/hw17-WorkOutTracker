@@ -1,7 +1,7 @@
 let mongoose = require("mongoose");
 let db = require("../models");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://admin:Password69@cluster0.ekoru.mongodb.net/myFirstDatabase", {
 	useNewUrlParser: true,
 	useFindAndModify: false,
 });

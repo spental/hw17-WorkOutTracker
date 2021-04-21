@@ -3,7 +3,7 @@ const path = require("path");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4200;
 
 const db = require("./models");
 const app = express();
@@ -15,7 +15,7 @@ app.use(express.static("public"));
 
 
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://admin:Password69@cluster0.ekoru.mongodb.net/myFirstDatabase", {
 	useNewUrlParser: true,
 
 });

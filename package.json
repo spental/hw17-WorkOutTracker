@@ -9,11 +9,14 @@
 		"watch": "nodemon server.js",
 		"seed": "node seeders/seed.js"
 	},
-	"author": "Leslie Book",
+	"author": "Spen Talb",
 	"license": "ISC",
 	"dependencies": {
-		"express": "^4.16.3",
-		"mongoose": "^5.3.16",
-		"morgan": "^1.9.1"
+		"express": "^4.17.1",
+		"mongodb": "^3.6.6",
+		"mongoose": "^5.12.5",
+		"morgan": "^1.9.1",
+		"node": "^15.14.0",
+		"node.js": "0.0.1-security"
 	}
 }
