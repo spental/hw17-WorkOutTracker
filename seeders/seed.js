@@ -3,7 +3,7 @@ let db = require("../models");
 
 
 mongoose.connect(
-	process.env.MONGODB_URI ||"mongodb+srv://admin:Password69@cluster0.ekoru.mongodb.net/myFirstDatabase" ,
+	process.env.MONGODB_URI ||"mongodb://localhost/myFirstDatabase" ,
 	{
 	  useNewUrlParser: true,
 	  useUnifiedTopology: true,

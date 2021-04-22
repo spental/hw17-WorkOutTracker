@@ -15,7 +15,7 @@ app.use(express.static("public"));
 
 
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://admin:Password69@cluster0.ekoru.mongodb.net/myFirstDatabase", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://admin:Password69@cluster0.ekoru.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
 	useNewUrlParser: true,
 
 });
